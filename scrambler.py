@@ -4,26 +4,14 @@ import keyboard
 import tkinter
 from tkinter import *
 
-textString = "Text"
-sLen = len(textString)
-    
+text = list("Text")           #put text in "", will split into a list for easy randomization
+
 def scramble():
-    newlist = ["nochar"]*sLen
-    for char in textString:
-        tryindex = random.randint(0,sLen-1)
-        found = False
-        while found is False:
-            if newlist[tryindex] == "nochar":
-                found = True
-                newlist[tryindex] = char
-            else:
-                if tryindex == 0:
-                    tryindex = sLen
-                tryindex-=1
-            
-    output = ""
-    for thing in newlist:
-        output+=thing
+    global text
+    output=""
+    while len(text) > 0:
+        output+=text.pop(random.randint(0,len(text)-1))
+    text = list(output)
     return output
     
 #checks to see if box is ticked when shortcut is pressed
